@@ -1,12 +1,24 @@
+import { ProxyState } from "../AppState.js";
 import List from "../Models/List.js";
+import { save } from "../Utils/localStorage.js";
 
 //Public
 class ListService {
-  //TODO  Here is where we handle all of our business logic,
-  //given the information you need in the controller,
-  //what methods will you need to do when this class is first 'constructed'?
-  //NOTE You will need this code to persist your data into local storage, be sure to call the store method to save after each change
+
+  constructor() {
+    ProxyState.on("lists", save)
+  }
+
+  createList(data) {
+    let newList = new List(data)
+    ProxyState.lists = [...ProxyState.lists, newList]
+  }
+
+  deleteList(id) {
+    ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
+    ProxyState.tasks = ProxyState.tasks.filter(task => task.listId != id)
+  }
+
 }
 
-const SERVICE = new ListService();
-export default SERVICE;
+export const listService = new ListService();

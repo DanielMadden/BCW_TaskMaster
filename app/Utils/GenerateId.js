@@ -1,13 +1,12 @@
 /**
- * @returns {string} A random string of characters
+ * @returns {string} A random string of 10 characters
  */
 export const generateId = function() {
   var result = "";
   var characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
   for (var i = 0; i < 10; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return result;
 };

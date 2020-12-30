@@ -1,18 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="assets/style.css" />
-    <title>TaskMaster</title>
-  </head>
 
-  <body>
-    <script src="app/main.js" type="module"></script>
-  </body>
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+  <!-- "Confirm Delete" Popup -->
+  <div id="modal-confirm" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center pb-0 pt-2">
+          <h5 class="modal-title">Confirm Delete?</h5>
+        </div>
+        <div class="modal-body d-flex flex-column justify-content-center align-items-center pt-1 pb-0">
+          <h1 style="color: #F2C94C"><i class="fas fa-exclamation-triangle"></i></h1>
+          <p style="color:#BDBDBD">THIS CANNOT BE UNDONE!</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-around pt-0">
+          <button id="modal-button-cancel" type="button" class="btn" data-dismiss="modal">Cancel</button>
+          <button id="modal-button-confirm" type="button" class="btn" data-dismiss="modal">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popover -->
+  <div id="popover">
+    <div id="popover-arrow"></div>
+    <div id="popover-items">
+      <i class="fas fa-sort-up"></i>
+      <button id="popover-delete">
+        <i class="far fa-trash-alt"></i>
+      </button>
+      <i class="fas fa-sort-down"></i>
+    </div>
+  </div>
+
+  <div id="main" class="container-fluid">
+    <h1>Task Master</h1>
+    <form onsubmit="app.listController.createList(event)">
+      <input id="new-list-title" type="text" name="new-title" pattern=".{3,15}" maxlength="15" required>
+      <input id="new-list-color" type="color" name="new-color" list="color-choices" value="#ff4747"
+        onclick="app.colorController.updateColor()">
+      <datalist id="color-choices">
+        <option value="#ff4747"></option>
+        <option value="#ffac47"></option>
+        <option value="#ffda47"></option>
+        <option value="#87ff47"></option>
+        <option value="#47ffa9"></option>
+        <option value="#47daff"></option>
+        <option value="#4791ff"></option>
+        <option value="#9d47ff"></option>
+        <option value="#ff47ce"></option>
+      </datalist>
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- <div id="lists" class="row px-3 justify-content-around"> -->
+    <div id="lists" class="card-columns">
+
+
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="app/main.js" type="module"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/e4c344fccb.js" crossorigin="anonymous"></script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
