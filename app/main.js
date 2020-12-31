@@ -1,28 +1,4 @@
 /**
- * VISUALIZATION
- * DONE All lists are Rendered on load/reload
- * DONE Lists are displayed out in columns across the page
- * DONE Lists and Items each have a delete button
- * DONE Lists utilize form inputs so users can specify a name/title
- * DONE Each List has a form so Items can be added to the List
- * 
- * FUNCTIONALITY
- * DONE Lists can be Created and Deleted
- * DONE Items can be Created and Deleted
- * TODO Data persists through local storage
- * DONE Use a 'color' input so users can set the color for their list.
- * DONE Users are prompted to confirm any delete (search window.confirm)
- * 
- * STRETCH GOALS
- * DONE List items can be marked 'complete' separately from being deleted
- * DONE Use something like masonry to render the lists more elegantly
- * DONE Use a better popup then window.confirm for a more clean user experience
- * 
- */
-
-// Apparently I was looking at the readme of the OLDER version of this assignment... Here's an updated one:
-
-/**
  * REQUIREMENTS
  * DONE All lists and tasks are rendered on load/reload
  * DONE Lists are displayed out in columns across the page
@@ -50,12 +26,16 @@
  * PERSONAL GOALS
  * NOTE Add Sounds
  * DONE Deleting lists pulls up modal
- * NOTE Tasks have a "***" that will open a little popover
- * NOTE Popover: delete button
- * NOTE Popover: move up
- * NOTE Popover: move down
+ * DONE Tasks have a "***" that will open a little popover
+ * DONE Popover: colors the "***" and closes popover on click
+ * DONE Popover: delete button
+ * DONE Popover: move up
+ * DONE Popover: move down
  * NOTE Popover: add subtask 
+ * DONE Popover: popover itself moves with the movement of the tasks
  * NOTE Custom Checkboxes
+ * NOTE Customize the color selector
+ * NOTE Center title and form and make it look pretty
  */
 
 import ColorController from "./Controllers/ColorController.js";

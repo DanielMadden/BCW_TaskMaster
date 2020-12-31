@@ -2,6 +2,13 @@
     --light-gray: rgb(204, 204, 204);
     --theme-main: white;
     --theme-text: black;
+    --theme-text-mid: gray;
+    --theme-text-invert: white;
+    --popover-color: white;
+}
+
+body {
+    color: var(--theme-text)
 }
 
 button:focus {
@@ -9,7 +16,7 @@ button:focus {
 }
 
 a:focus {
-    /* outline: 0 !important; */
+    outline: 0 !important;
 }
 
 .card-columns {
@@ -120,36 +127,31 @@ input::-webkit-color-swatch {
 .task-checkbox {
     width: 20px;
     border: 1px solid red;
+    display: inline-block
 }
 
 .task-checkbox:checked+.task-name {
-    text-decoration-line: line-through;
+    text-decoration: line-through;
 }
 
 /* .task-name {
-    transition: text-decoration-line 0.3s;
+    max-width: 60% !important;
 } */
 
-.task-delete-button {
+.task-dot-button {
     border: 0;
-    border-radius: 100%;
     background-color: rgb(0, 0, 0, 0);
     right: 0px;
     position: absolute;
-    color: gray;
+    color: var(--theme-text-mid);
     transition: background-color 0.1s, color 0.1s, opacity 0.1s;
     opacity: 0;
     /* display: none; */
 }
 
-.list-task:hover .task-delete-button {
+.list-task:hover .task-dot-button {
     opacity: 1;
     /* display: inline-block; */
-}
-
-.task-delete-button:hover {
-    color: red;
-    /* background-color: red */
 }
 
 /* .task-dot-button:hover {
@@ -159,33 +161,33 @@ input::-webkit-color-swatch {
 #popover {
     position: fixed;
     z-index: 100;
+    transition: opacity 0.1s;
+    opacity: 1
+}
+
+#popover.hidden {
+    opacity: 0 !important;
+    pointer-events: none;
 }
 
 #popover-arrow {
     width: 0;
     height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 20px solid var(--theme-main);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid var(--popover-color);
 }
 
 #popover-items {
-    background-color: white;
+    background-color: var(--theme-main);
+    border: 5px solid var(--popover-color);
     width: 100%;
-    box-shadow: 0px 10px 8px #bebebe;
+    border-radius: 5px;
+    /* box-shadow: 0px 10px 8px #bebebe; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1px;
-}
-
-#popover-delete {
-    border: 0;
-    border-radius: 10%;
-    background-color: rgb(0, 0, 0, 0);
-    color: gray;
-    transition: background-color 0.1s, color 0.1s, opacity 0.1s;
-    /* opacity: 0; */
+    padding: 5px;
 }
 
 #popover-delete:hover {
@@ -193,9 +195,56 @@ input::-webkit-color-swatch {
     /* background-color: red */
 }
 
+@keyframes shake {
+    0% {
+        transform: rotate(0deg)
+    }
+    25% {
+        transform: rotate(10deg)
+    }
+    50% {
+        transform: rotate(0deg)
+    }
+    75% {
+        transform: rotate(-10deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
 #popover-delete.confirm {
     background-color: red;
     color: white;
+    animation: shake .5s linear 0s infinite normal
+}
+
+#popover-dots {
+    z-index: 100;
+    color: var(--popover-color);
+    border: 0;
+    background-color: rgb(0, 0, 0, 0);
+    position: fixed;
+    transition: background-color 0.1s, color 0.1s, opacity 0.1s;
+    opacity: 1;
+}
+
+#popover-dots.hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.popover-button {
+    border: 0;
+    border-radius: 10%;
+    background-color: rgb(0, 0, 0, 0);
+    color: var(--theme-text-mid);
+    /* text-shadow: 0px 2px 6px #5a5a5a; */
+    transition: background-color 0.1s, color 0.1s, opacity 0.1s;
+}
+
+.popover-move:hover {
+    color: var(--popover-color)
 }
 
 .new-task-form {

@@ -39,20 +39,25 @@ export default class TaskController {
         _drawRatio(listId)
     }
 
-    deleteTask(id, listId) {
-        // let element = document.getElementById("popover-delete")
-        // if (element.classList.contains("confirm")) {
-        taskService.deleteTask(id)
-        _drawTasks(listId)
-        _drawRatio(listId)
-        //     window.app.popController.hide()
-        // } else {
-        //     element.classList.add("confirm")
-        // }
+    deleteTask(id, listId, event) {
+        event.stopPropagation()
+        if (document.getElementById("popover-delete").classList.contains("confirm")) {
+            taskService.deleteTask(id)
+            _drawTasks(listId)
+            _drawRatio(listId)
+            window.app.popController.hide()
+        } else {
+            window.app.popController.confirmDelete()
+        }
     }
 
     checkTask(id, listId) {
         taskService.checkTask(id, document.getElementById(`${id}-checkbox`).checked)
         _drawRatio(listId)
+    }
+
+    moveTask(id, listId, direction) {
+        taskService.moveTask(id, listId, direction)
+        _drawTasks(listId)
     }
 }

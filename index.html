@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body>
+<body onscroll="app.popController.hide()">
 
   <!-- "Confirm Delete" Popup -->
   <div id="modal-confirm" class="modal fade" tabindex="-1" role="dialog">
@@ -37,18 +37,25 @@
   </div>
 
   <!-- Popover -->
-  <div id="popover">
-    <div id="popover-arrow"></div>
+  <div id="popover" class="d-flex flex-row align-items-center" onclick="app.popController.noDelete()">
     <div id="popover-items">
-      <i class="fas fa-sort-up"></i>
-      <button id="popover-delete">
+      <button id="popover-up" class="popover-move popover-button">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <button id="popover-delete" class="popover-button">
         <i class="far fa-trash-alt"></i>
       </button>
-      <i class="fas fa-sort-down"></i>
+      <button id="popover-down" class="popover-move popover-button">
+        <i class="fas fa-arrow-down"></i>
+      </button>
     </div>
+    <div id="popover-arrow"></div>
   </div>
+  <button id="popover-dots" onclick="app.popController.hide()">
+    <i class="fas fa-ellipsis-h"></i>
+  </button>
 
-  <div id="main" class="container-fluid">
+  <div id="main" class="container-fluid" onclick="app.popController.hide()">
     <h1>Task Master</h1>
     <form onsubmit="app.listController.createList(event)">
       <input id="new-list-title" type="text" name="new-title" pattern=".{3,15}" maxlength="15" required>

@@ -56,8 +56,8 @@ export default class List {
             type="text" 
             placeholder="Add Task..."
             style="caret-color: ${this.color}"
-            pattern=".{3,50}"
-            maxlength="50"   
+            pattern=".{3,30}"
+            maxlength="30"   
             required
             onfocusin="this.style['border-bottom']='2px solid ${this.color}'"
             onfocusout="this.style['border-bottom']='2px solid var(--light-gray)'">

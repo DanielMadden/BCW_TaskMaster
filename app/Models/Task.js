@@ -19,10 +19,11 @@ export default class Task {
               ${this.checked ? "checked" : ""}>
               <span class="task-name">${this.title}</span>
               <button
-    class="task-delete-button"
-    onclick="app.taskController.deleteTask('${this.id}', '${this.listId}')" >
-    <i class="far fa-trash-alt"></i>
-</button>
+                id="${this.id}-dots"
+                class="task-dot-button"
+                onclick="app.popController.show('${this.id}', '${this.listId}', event)">
+              <i class="fas fa-ellipsis-h"></i>
+              </button>
             </div>
         `
     }
