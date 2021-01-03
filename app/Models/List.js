@@ -62,6 +62,10 @@ export default class List {
             onfocusin="this.style['border-bottom']='2px solid ${this.color}'"
             onfocusout="this.style['border-bottom']='2px solid var(--light-gray)'">
 
+            <button class="new-task-fake-button">
+              <i class="fas fa-plus"></i>
+            </button>
+
             <button
             class="new-task-button"
             type="submit"

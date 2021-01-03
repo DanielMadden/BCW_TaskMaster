@@ -7,6 +7,8 @@ class AppState extends EventEmitter {
   lists = []
   /** @type {Task[]} */
   tasks = []
+  /** @type {Color[]} */
+  colors = []
 }
 
 export const ProxyState = new Proxy(new AppState(), {

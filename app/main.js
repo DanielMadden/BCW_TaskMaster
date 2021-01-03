@@ -24,24 +24,26 @@
  * NOTE Add Toast notifications to encourage completed tasks
  * 
  * PERSONAL GOALS
- * NOTE Add Sounds
+ * DONE Add Sounds
  * DONE Deleting lists pulls up modal
  * DONE Tasks have a "***" that will open a little popover
  * DONE Popover: colors the "***" and closes popover on click
  * DONE Popover: delete button
  * DONE Popover: move up
  * DONE Popover: move down
- * NOTE Popover: add subtask 
  * DONE Popover: popover itself moves with the movement of the tasks
  * NOTE Custom Checkboxes
- * NOTE Customize the color selector
- * NOTE Center title and form and make it look pretty
+ * DONE Customize the color selector
+ * DONE Center title and form and make it look pretty
+ * DONE Make + button gray by default, then color when valid
+ * NOTE Add subtasks???
  */
 
 import ColorController from "./Controllers/ColorController.js";
 import ListController from "./Controllers/ListController.js";
 import ModalController from "./Controllers/ModalController.js";
 import PopController from "./Controllers/PopoverController.js";
+import { soundController } from "./Controllers/SoundController.js";
 import TaskController from "./Controllers/TaskController.js";
 import { load } from "./Utils/localStorage.js";
 
@@ -52,6 +54,7 @@ class App {
   modalController = new ModalController()
   colorController = new ColorController()
   popController = new PopController()
+  soundController = soundController
 }
 
 window["app"] = new App();

@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -37,7 +41,7 @@
   </div>
 
   <!-- Popover -->
-  <div id="popover" class="d-flex flex-row align-items-center" onclick="app.popController.noDelete()">
+  <div id="popover" class="d-flex flex-row align-items-center hidden" onclick="app.popController.noDelete()">
     <div id="popover-items">
       <button id="popover-up" class="popover-move popover-button">
         <i class="fas fa-arrow-up"></i>
@@ -51,36 +55,57 @@
     </div>
     <div id="popover-arrow"></div>
   </div>
-  <button id="popover-dots" onclick="app.popController.hide()">
+  <button id="popover-dots" class="hidden" onclick="app.popController.hide()">
     <i class="fas fa-ellipsis-h"></i>
   </button>
 
-  <div id="main" class="container-fluid" onclick="app.popController.hide()">
-    <h1>Task Master</h1>
-    <form onsubmit="app.listController.createList(event)">
-      <input id="new-list-title" type="text" name="new-title" pattern=".{3,15}" maxlength="15" required>
-      <input id="new-list-color" type="color" name="new-color" list="color-choices" value="#ff4747"
-        onclick="app.colorController.updateColor()">
-      <datalist id="color-choices">
-        <option value="#ff4747"></option>
-        <option value="#ffac47"></option>
-        <option value="#ffda47"></option>
-        <option value="#87ff47"></option>
-        <option value="#47ffa9"></option>
-        <option value="#47daff"></option>
-        <option value="#4791ff"></option>
-        <option value="#9d47ff"></option>
-        <option value="#ff47ce"></option>
-      </datalist>
-      <button type="submit">Add</button>
-    </form>
+  <!-- Audio -->
+  <audio id="click-1" src="sounds/click1.mp3"></audio>
+  <audio id="click-2" src="sounds/click2.mp3"></audio>
+  <audio id="click-3" src="sounds/click3.mp3"></audio>
+  <audio id="click-4" src="sounds/click4.mp3"></audio>
 
-    <!-- <div id="lists" class="row px-3 justify-content-around"> -->
-    <div id="lists" class="card-columns">
-
-
+  <!-- Header (title, add list form) -->
+  <header class="py-5" onclick="app.popController.hide(), app.colorController.hideColors()">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-center p-3">
+        <h1 id="title">Task Master</h1>
+      </div>
+      <form onsubmit="app.listController.createList(event)">
+        <div class="d-flex justify-content-center align-items-center">
+          <input id="new-list-title" type="text" name="new-title" pattern=".{3,15}" maxlength="15"
+            placeholder="List Name..." required class="mx-3">
+          <!-- <span class="mr-2">Color:</span> -->
+          <div id="new-list-color-popup-positioner">
+            <div id="new-list-color-choice" class="d-flex justify-content-center align-items-center"
+              onclick="app.colorController.showColors(event)">
+              <i id="new-list-color-popup-dots" class="fas fa-ellipsis-h"></i>
+            </div>
+            <div id="new-list-color-popup" class="d-flex flex-column align-items-center hidden">
+              <div id="new-list-color-arrow"></div>
+              <div id="new-list-colors" class="d-flex p-1 justify-content-center">
+              </div>
+            </div>
+          </div>
+          <input id="new-list-color" type="color" name="new-color">
+          <button type="submit" id="new-list-button" class="btn mx-3">Create</button>
+        </div>
+      </form>
     </div>
-  </div>
+  </header>
+
+  <!-- Main (lists) -->
+  <main onclick="app.popController.hide(), app.colorController.hideColors()">
+    <div class="container-fluid">
+      <div id="lists" class="card-columns">
+
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (absolutely nothing) -->
+  <footer></footer>
 
   <!-- Script -->
   <script src="app/main.js" type="module"></script>

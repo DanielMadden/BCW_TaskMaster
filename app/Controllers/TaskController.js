@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { taskService } from "../Services/TaskService.js"
 import { save } from "../Utils/localStorage.js"
+import { soundController } from "./SoundController.js"
 
 function _drawTasks(listId) {
     let template = ""
@@ -37,6 +38,7 @@ export default class TaskController {
         form.reset()
         _drawTasks(listId)
         _drawRatio(listId)
+        soundController.playSound(1)
     }
 
     deleteTask(id, listId, event) {
@@ -46,17 +48,21 @@ export default class TaskController {
             _drawTasks(listId)
             _drawRatio(listId)
             window.app.popController.hide()
+            soundController.playSound(3)
         } else {
             window.app.popController.confirmDelete()
+            soundController.playSound(4)
         }
     }
 
     checkTask(id, listId) {
         taskService.checkTask(id, document.getElementById(`${id}-checkbox`).checked)
+        soundController.playSound(4)
         _drawRatio(listId)
     }
 
     moveTask(id, listId, direction) {
+        soundController.playSound(1)
         taskService.moveTask(id, listId, direction)
         _drawTasks(listId)
     }

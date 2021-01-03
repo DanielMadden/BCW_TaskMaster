@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { listService } from "../Services/ListService.js";
+import { soundController } from "./SoundController.js";
 
 function _drawLists() {
   let template = ""
@@ -65,6 +66,7 @@ export default class ListController {
     // console.log(data)
     form.reset()
     form["new-color"].value = lastColor
+    soundController.playSound(1)
   }
 
   deleteList(id) {

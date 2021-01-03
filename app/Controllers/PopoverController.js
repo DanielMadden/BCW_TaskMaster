@@ -1,10 +1,12 @@
 import { ProxyState } from "../AppState.js"
+import { soundController } from "./SoundController.js"
 export default class PopController {
     constructor() {
     }
     show(id, listId, event) {
         if (event) {
             event.stopPropagation()
+            soundController.playSound(2)
         }
         this.noDelete()
         let element = document.getElementById(`${id}-dots`).getBoundingClientRect()
